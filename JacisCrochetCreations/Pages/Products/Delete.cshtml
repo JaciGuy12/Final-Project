@@ -1,0 +1,19 @@
+@page "{id:int}"
+@model JacisCrochetCreations.Pages.Products.DeleteModel
+@{
+    ViewData["Title"] = "Delete Product";
+}
+
+<h1 class="text-pink fw-bold mb-4">Delete Product</h1>
+
+<div class="card shadow-sm p-4 text-center">
+
+    <h4>Are you sure you want to delete this product?</h4>
+    <p class="fw-bold text-pink">@Model.Product.Name</p>
+
+    <form method="post">
+        <input type="hidden" asp-for="Product.ProductId" />
+        <button type="submit" class="btn btn-pink-dark">Delete</button>
+        <a asp-page="Index" class="btn btn-secondary ms-2">Cancel</a>
+    </form>
+</div>

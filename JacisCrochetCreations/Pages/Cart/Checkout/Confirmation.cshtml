@@ -1,0 +1,53 @@
+@page
+@model JacisCrochetCreations.Pages.Cart.Checkout.ConfirmationModel
+
+<h2 class="text-pink fw-bold mb-3">Order Confirmed 💖</h2>
+
+<p class="mb-4">
+    Thank you for supporting <strong>Jaci's Crochet Creations</strong>!  
+    Your handmade items will be stitched and packaged with care.
+</p>
+
+@if (Model.PurchasedItems != null && Model.PurchasedItems.Any())
+{
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-light">
+            <h5 class="m-0 text-pink">Items in your order</h5>
+        </div>
+        <div class="card-body">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="text-center">Quantity</th>
+                        <th class="text-end">Line Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.PurchasedItems)
+                    {
+                        <tr>
+                            <td>@item.Product?.Name</td>
+                            <td class="text-center">@item.Quantity</td>
+                            <td class="text-end">$@item.LineTotal</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="2" class="text-end">Order Total:</th>
+                        <th class="text-end">$@Model.OrderTotal</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <p class="text-muted">Your cart was empty, so there is nothing to show here.</p>
+}
+
+<a asp-page="/Products/Index" class="btn btn-pink">Continue Shopping</a>
+<a asp-page="/Index" class="btn btn-secondary ms-2">Back to Home</a>
+

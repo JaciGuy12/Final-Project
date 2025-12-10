@@ -1,0 +1,149 @@
+@page
+@model JacisCrochetCreations.Pages.Products.IndexModel
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1 class="text-pink fw-bold mb-4">Products</h1>
+
+<!-- SEARCH BAR -->
+<form method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="SearchTerm" value="@Model.SearchTerm" class="form-control" placeholder="Search products..." />
+        <button class="btn btn-pink" type="submit">Search</button>
+    </div>
+</form>
+
+<!-- CATEGORY FILTER -->
+<form method="get" class="mb-4">
+    <div class="input-group">
+
+        <select name="Category" class="form-select">
+            <option value="All" selected="@(Model.Category == "All" || Model.Category == null)">All Categories</option>
+            <option value="Scarf" selected="@(Model.Category == "Scarf")">Scarves</option>
+            <option value="Bag" selected="@(Model.Category == "Bag")">Bags</option>
+            <option value="Plushie" selected="@(Model.Category == "Plushie")">Plushies</option>
+            <option value="Sweater" selected="@(Model.Category == "Sweater")">Sweaters</option>
+            <option value="Blanket" selected="@(Model.Category == "Blanket")">Blankets</option>
+        </select>
+
+        <button class="btn btn-pink" type="submit">Filter</button>
+
+    </div>
+</form>
+
+<!-- SORTING BUTTONS -->
+<div class="mb-4 text-center">
+    <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort" asp-route-Category="@Model.Category" asp-route-SearchTerm="@Model.SearchTerm"
+       class="btn btn-sm btn-pink-light mx-1">Sort by Name</a>
+
+    <a asp-page="./Index" asp-route-sortOrder="@Model.PriceSort" asp-route-Category="@Model.Category" asp-route-SearchTerm="@Model.SearchTerm"
+       class="btn btn-sm btn-pink-light mx-1">Sort by Price</a>
+
+    <a asp-page="./Index" asp-route-sortOrder="@Model.CategorySort" asp-route-Category="@Model.Category" asp-route-SearchTerm="@Model.SearchTerm"
+       class="btn btn-sm btn-pink-light mx-1">Sort by Category</a>
+</div>
+
+<!-- PRODUCT CARD GRID -->
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    @foreach (var item in Model.Products)
+    {
+        <div class="col">
+            <div class="card product-card shadow-sm">
+
+                <img src="@item.ImageUrl" class="card-img-top product-image" alt="@item.Name">
+
+                <div class="card-body text-center">
+                    <h5 class="card-title text-pink fw-bold">@item.Name</h5>
+                    <p class="card-text mb-1"><strong>Category:</strong> @item.Category</p>
+                    <p class="card-text"><strong>Price:</strong> $@item.Price</p>
+
+                    <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+
+                        <a asp-page="Details" asp-route-id="@item.ProductId" class="btn btn-sm btn-pink-light">Details</a>
+                        <a asp-page="Edit" asp-route-id="@item.ProductId" class="btn btn-sm btn-pink">Edit</a>
+                        <a asp-page="Delete" asp-route-id="@item.ProductId" class="btn btn-sm btn-pink-dark">Delete</a>
+
+                        @if (item.Stock > 0)
+                        {
+                            <!-- Add to Cart button when item IS in stock -->
+                            <a asp-page="/Cart/Add"
+                               asp-route-productId="@item.ProductId"
+                               class="btn btn-sm btn-pink">
+                                Add to Cart
+                            </a>
+                        }
+                        else
+                        {
+                            <!-- Disabled Out of Stock button -->
+                            <button class="btn btn-sm btn-secondary" disabled>
+                                Out of Stock
+                            </button>
+                        }
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+
+<!-- PAGINATION -->
+<nav class="mt-4">
+    <ul class="pagination justify-content-center">
+
+        <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
+            <a class="page-link"
+               asp-route-pageIndex="@(Model.PageIndex - 1)"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-SearchTerm="@Model.SearchTerm"
+               asp-route-Category="@Model.Category">
+               Previous
+            </a>
+        </li>
+
+        <li class="page-item disabled">
+            <span class="page-link">
+                Page @Model.PageIndex of @Model.TotalPages
+            </span>
+        </li>
+
+        <li class="page-item @(Model.PageIndex == Model.TotalPages ? "disabled" : "")">
+            <a class="page-link"
+               asp-route-pageIndex="@(Model.PageIndex + 1)"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-SearchTerm="@Model.SearchTerm"
+               asp-route-Category="@Model.Category">
+               Next
+            </a>
+        </li>
+
+    </ul>
+</nav>
+
+<!-- CARD STYLING -->
+<style>
+    .product-card {
+        border-radius: 15px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 20px rgba(214, 51, 132, 0.4);
+    }
+
+    .product-image {
+        height: 220px;
+        object-fit: cover;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+</style>
+
+
+
+
+
+

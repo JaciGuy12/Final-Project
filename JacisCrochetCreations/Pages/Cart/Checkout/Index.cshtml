@@ -1,0 +1,92 @@
+@page
+@model JacisCrochetCreations.Pages.Checkout.IndexModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h1 class="text-pink fw-bold mb-4">Checkout</h1>
+
+@if (Model.CartItems == null || !Model.CartItems.Any())
+{
+    <div class="alert alert-warning text-center">
+        Your cart is empty — add some items first!
+    </div>
+}
+else
+{
+    <h4 class="mb-3 text-pink">Order Summary</h4>
+
+    <table class="table table-bordered bg-white shadow-sm">
+        <thead class="table-pink">
+            <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.CartItems)
+        {
+            <tr>
+                <td>@item.Product.Name</td>
+                <td>@item.Quantity</td>
+                <td>$@item.UnitPrice</td>
+                <td>$@(item.LineTotal)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <h4 class="text-end text-pink fw-bold">
+        Grand Total: $@Model.CartItems.Sum(c => c.LineTotal)
+    </h4>
+
+    <hr />
+
+    <h4 class="text-pink mb-3">Your Information</h4>
+
+    <form method="post" class="bg-white p-4 rounded shadow-sm">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input asp-for="Form.Name" class="form-control" />
+            <span asp-validation-for="Form.Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input asp-for="Form.Email" class="form-control" />
+            <span asp-validation-for="Form.Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input asp-for="Form.Phone" class="form-control" />
+            <span asp-validation-for="Form.Phone" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Card Number</label>
+            <input asp-for="Form.CardNumber" class="form-control" />
+            <span asp-validation-for="Form.CardNumber" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-pink w-100 fw-bold">Place Order</button>
+    </form>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<style>
+    .table-pink {
+        background-color: #ffe0ef;
+        color: #8a1f54;
+        font-weight: bold;
+    }
+</style>
+
