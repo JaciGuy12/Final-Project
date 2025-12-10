@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jacig\\OneDrive\\Desktop\\Final-Project\\JacisCrochetCreations\\JacisCrochetCreations\\JacisCrochetCreations.csproj": {}
+    "C:\\Users\\jacig\\OneDrive\\JacisCrochetCreations\\Final-Project\\JacisCrochetCreations\\JacisCrochetCreations.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jacig\\OneDrive\\Desktop\\Final-Project\\JacisCrochetCreations\\JacisCrochetCreations\\JacisCrochetCreations.csproj": {
+    "C:\\Users\\jacig\\OneDrive\\JacisCrochetCreations\\Final-Project\\JacisCrochetCreations\\JacisCrochetCreations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jacig\\OneDrive\\Desktop\\Final-Project\\JacisCrochetCreations\\JacisCrochetCreations\\JacisCrochetCreations.csproj",
+        "projectUniqueName": "C:\\Users\\jacig\\OneDrive\\JacisCrochetCreations\\Final-Project\\JacisCrochetCreations\\JacisCrochetCreations.csproj",
         "projectName": "JacisCrochetCreations",
-        "projectPath": "C:\\Users\\jacig\\OneDrive\\Desktop\\Final-Project\\JacisCrochetCreations\\JacisCrochetCreations\\JacisCrochetCreations.csproj",
+        "projectPath": "C:\\Users\\jacig\\OneDrive\\JacisCrochetCreations\\Final-Project\\JacisCrochetCreations\\JacisCrochetCreations.csproj",
         "packagesPath": "C:\\Users\\jacig\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jacig\\OneDrive\\Desktop\\Final-Project\\JacisCrochetCreations\\JacisCrochetCreations\\obj\\",
+        "outputPath": "C:\\Users\\jacig\\OneDrive\\JacisCrochetCreations\\Final-Project\\JacisCrochetCreations\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jacig\\AppData\\Roaming\\NuGet\\NuGet.Config"

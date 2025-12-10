@@ -1,5 +1,5 @@
 @page "{productId:int}"
-@model JacisCrochetCreations.Pages.Reviews.AddReviewModel
+@model JacisCrochetCreations.Pages.Products.AddReviewModel
 @{
     ViewData["Title"] = "Leave a Review";
 }
@@ -7,7 +7,7 @@
 <h2 class="text-pink fw-bold mb-4">Leave a Review</h2>
 
 <form method="post">
- 
+
     <input type="hidden" asp-for="Review.ProductId" />
 
     <div class="mb-3">
@@ -34,10 +34,12 @@
         <span asp-validation-for="Review.Content" class="text-danger"></span>
     </div>
 
-    <a asp-page="/Products/Details" asp-route-id="@Model.ProductId" class="btn btn-pink">Submit Review</a>
+    <button type="submit" class="btn btn-pink">Submit Review</button>
+
     <a asp-page="/Products/Details" asp-route-id="@Model.ProductId" class="btn btn-secondary">Cancel</a>
 </form>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+

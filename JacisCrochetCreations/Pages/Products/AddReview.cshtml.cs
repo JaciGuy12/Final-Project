@@ -3,7 +3,7 @@ using JacisCrochetCreations.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace JacisCrochetCreations.Pages.Reviews
+namespace JacisCrochetCreations.Pages.Products
 {
     public class AddReviewModel : PageModel
     {
@@ -35,7 +35,9 @@ namespace JacisCrochetCreations.Pages.Reviews
             _context.Reviews.Add(Review);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/Products/Index", new { id = Review.ProductId });
+            return RedirectToPage("/Products/Details", new { id = Review.ProductId });
         }
     }
 }
+
+
