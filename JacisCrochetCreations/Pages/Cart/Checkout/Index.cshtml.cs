@@ -53,9 +53,6 @@ namespace JacisCrochetCreations.Pages.Checkout
                 return Page();
             }
 
-            // Normally you would save order to database here…
-
-            // Clear the cart
             _context.CartItems.RemoveRange(CartItems);
             _context.SaveChanges();
 

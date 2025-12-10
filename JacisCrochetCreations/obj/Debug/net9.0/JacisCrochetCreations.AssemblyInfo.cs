@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JacisCrochetCreations")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+073c260a563913716d0734ec4d800c25237a13ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6b21dfc66e4e1095435e78718982aaf509165cc")]
 [assembly: System.Reflection.AssemblyProductAttribute("JacisCrochetCreations")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JacisCrochetCreations")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

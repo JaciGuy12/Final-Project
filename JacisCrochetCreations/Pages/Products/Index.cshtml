@@ -6,7 +6,7 @@
 
 <h1 class="text-pink fw-bold mb-4">Products</h1>
 
-<!-- SEARCH BAR -->
+
 <form method="get" class="mb-3">
     <div class="input-group">
         <input type="text" name="SearchTerm" value="@Model.SearchTerm" class="form-control" placeholder="Search products..." />
@@ -14,7 +14,7 @@
     </div>
 </form>
 
-<!-- CATEGORY FILTER -->
+
 <form method="get" class="mb-4">
     <div class="input-group">
 
@@ -32,7 +32,7 @@
     </div>
 </form>
 
-<!-- SORTING BUTTONS -->
+
 <div class="mb-4 text-center">
     <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort" asp-route-Category="@Model.Category" asp-route-SearchTerm="@Model.SearchTerm"
        class="btn btn-sm btn-pink-light mx-1">Sort by Name</a>
@@ -44,7 +44,7 @@
        class="btn btn-sm btn-pink-light mx-1">Sort by Category</a>
 </div>
 
-<!-- PRODUCT CARD GRID -->
+
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
     @foreach (var item in Model.Products)
     {
@@ -66,7 +66,7 @@
 
                         @if (item.Stock > 0)
                         {
-                            <!-- Add to Cart button when item IS in stock -->
+               
                             <a asp-page="/Cart/Add"
                                asp-route-productId="@item.ProductId"
                                class="btn btn-sm btn-pink">
@@ -75,7 +75,7 @@
                         }
                         else
                         {
-                            <!-- Disabled Out of Stock button -->
+                    
                             <button class="btn btn-sm btn-secondary" disabled>
                                 Out of Stock
                             </button>
@@ -89,7 +89,7 @@
     }
 </div>
 
-<!-- PAGINATION -->
+
 <nav class="mt-4">
     <ul class="pagination justify-content-center">
 
@@ -122,7 +122,6 @@
     </ul>
 </nav>
 
-<!-- CARD STYLING -->
 <style>
     .product-card {
         border-radius: 15px;

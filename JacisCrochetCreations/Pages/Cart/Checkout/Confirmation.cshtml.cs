@@ -19,15 +19,15 @@ namespace JacisCrochetCreations.Pages.Cart.Checkout
 
         public async Task OnGetAsync()
         {
-            // Load current cart items with products
+     
             PurchasedItems = await _context.CartItems
                 .Include(c => c.Product)
                 .ToListAsync();
 
-            // Calculate total
+  
             OrderTotal = PurchasedItems.Sum(i => i.LineTotal);
 
-            // Clear the cart after "purchase"
+
             if (PurchasedItems.Any())
             {
                 _context.CartItems.RemoveRange(PurchasedItems);

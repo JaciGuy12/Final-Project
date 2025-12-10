@@ -16,18 +16,18 @@ namespace JacisCrochetCreations.Pages.Cart
 
         public IActionResult OnGet(int productId)
         {
-            // Find the product
+ 
             var product = _context.Products.FirstOrDefault(p => p.ProductId == productId);
             if (product == null)
                 return RedirectToPage("/Products/Index");
 
-            // Check if item already exists in cart
+      
             var existingItem = _context.CartItems
                 .FirstOrDefault(c => c.ProductId == productId);
 
             if (existingItem != null)
             {
-                existingItem.Quantity += 1; // Increase quantity
+                existingItem.Quantity += 1; 
             }
             else
             {

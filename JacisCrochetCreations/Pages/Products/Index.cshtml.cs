@@ -17,15 +17,15 @@ namespace JacisCrochetCreations.Pages.Products
 
         public IList<Product> Products { get; set; }
 
-        // SEARCH
+
         [BindProperty(SupportsGet = true)]
         public string SearchTerm { get; set; }
 
-        // CATEGORY FILTER
+   
         [BindProperty(SupportsGet = true)]
         public string Category { get; set; }
 
-        // SORTING
+   
         public string NameSort { get; set; }
         public string PriceSort { get; set; }
         public string CategorySort { get; set; }
@@ -39,20 +39,20 @@ namespace JacisCrochetCreations.Pages.Products
         {
             CurrentSort = sortOrder;
 
-            // Sorting toggles
+    
             NameSort = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             PriceSort = sortOrder == "price" ? "price_desc" : "price";
             CategorySort = sortOrder == "category" ? "category_desc" : "category";
 
             var query = _context.Products.AsQueryable();
 
-            // CATEGORY FILTER
+   
             if (!string.IsNullOrEmpty(Category) && Category != "All")
             {
                 query = query.Where(p => p.Category == Category);
             }
 
-            // SEARCH FILTER
+
             if (!string.IsNullOrEmpty(SearchTerm))
             {
                 query = query.Where(p =>
@@ -60,7 +60,6 @@ namespace JacisCrochetCreations.Pages.Products
                     p.Category.Contains(SearchTerm));
             }
 
-            // APPLY SORTING
             query = sortOrder switch
             {
                 "name_desc" => query.OrderByDescending(p => p.Name),
@@ -71,7 +70,6 @@ namespace JacisCrochetCreations.Pages.Products
                 _ => query.OrderBy(p => p.Name),
             };
 
-            // PAGINATION SETTINGS
             int pageSize = 10;
             int count = await query.CountAsync();
 
